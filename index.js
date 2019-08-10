@@ -5,10 +5,12 @@ let mongoose        = require('mongoose');
 
 let usersRoutes     = require("./routes/usersRoutes")
 let commentsRoutes  = require("./routes/commentsRoutes");
+let commentsRoutes  = require("./routes/eventsRoutes");
+let commentsRoutes  = require("./routes/postsRoutes");
 
 let app             = express();
 
-let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@54.233.217.136:27017";
+let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@54.233.217.136:27017/greenmind";
 
 mongoose.set('useNewUrlParser',     true);
 mongoose.set('useFindAndModify',    false);
@@ -26,6 +28,8 @@ app.get('/', (req, res) => res.send("API comments" + port));
 
 app.use('/users',       usersRoutes);
 app.use('/comments',    commentsRoutes);
+app.use('/events',    eventsRoutes);
+app.use('/posts',    postsRoutes);
 
 let port = process.env.PORT || 8080;
 
