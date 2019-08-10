@@ -5,8 +5,8 @@ let mongoose        = require('mongoose');
 
 let usersRoutes     = require("./routes/usersRoutes")
 let commentsRoutes  = require("./routes/commentsRoutes");
-let commentsRoutes  = require("./routes/eventsRoutes");
-let commentsRoutes  = require("./routes/postsRoutes");
+let eventsRoutes  = require("./routes/eventsRoutes");
+let postsRoutes  = require("./routes/postsRoutes");
 
 let app             = express();
 
