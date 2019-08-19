@@ -7,7 +7,8 @@ let postsSchema = new Schema({
     description:   { type: String, required: true },
     date:     { type: Date, required: true },
     score:      { type: Number, required: true },
-    type:     { type: String, required: true }
+    type:     { type: String, required: true },
+    owner:     { type: String, required: true }
 });
 
 let Posts = mongoose.model('Posts', postsSchema);

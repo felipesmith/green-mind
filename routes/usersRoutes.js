@@ -16,11 +16,12 @@ router.get('/all', async function(req, res) {
 
 router.post('/create', async function(req,res) {
     try {
-        let created = await createUser(req.body.username, req.body.password);
+        
+        let created = await createUser(req.body.username, req.body.password, req.body.age, req.body.gender, req.body.name, req.body.surname);
         res.json(created);
     }
     catch (error) {
-        console.log(error);    
+        console.log(error);
     }
 });
 
@@ -30,7 +31,7 @@ router.post('/login', async function(req, res) {
         res.json(status);
     }
     catch (error) {
-        console.log(error);  
+        console.log(error);
     }
 });
 
@@ -40,7 +41,7 @@ router.post('/update', async function(req, res) {
         res.json(status);
     }
     catch (error) {
-        console.log(error);  
+        console.log(error);
     }
 });
 

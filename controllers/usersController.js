@@ -7,16 +7,17 @@ allUsers = async (req, res) => {
     return users;
 };
 
-createUser = async (username, userpass) => {
+createUser = async (username, userpass, age, gender, name, surname, location ) => {
     let password = bcrypt.hashSync(userpass, salt);
-    let user = Users({username, password});
+    let creteDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+    let user = Users({username, password, age, gender, name, surname, location, createDate});
     await user.save();
     return { username };
 };
 
 logInUser = async (username, password) => {
     let user = await Users.findOne({username});
-    return { User: bcrypt.compareSync(password, user.password) }; 
+    return { User: bcrypt.compareSync(password, user.password) };
 };
 
 changePasswordUser = async (username, password) => {
