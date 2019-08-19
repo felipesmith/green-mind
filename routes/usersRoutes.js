@@ -17,7 +17,7 @@ router.get('/all', async function(req, res) {
 router.post('/create', async function(req,res) {
     try {
 
-        let created = await createUser(req.body.username, req.body.password, req.body.age, req.body.gender, req.body.name, req.body.surname, req.body.createDate);
+        let created = await createUser(req.body.username, req.body.password, req.body.age, req.body.gender, req.body.name, req.body.surname, req.body.location, req.body.createDate);
         res.json(created);
     }
     catch (error) {
