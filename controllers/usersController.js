@@ -9,7 +9,7 @@ allUsers = async (req, res) => {
 
 createUser = async (username, userpass, age, gender, name, surname, location,createDate ) => {
     let password = bcrypt.hashSync(userpass, salt);
-    let creteDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+    let createDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');
     let user = Users({username, password, age, gender, name, surname, location, createDate});
     await user.save();
     return { username };
