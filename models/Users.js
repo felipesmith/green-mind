@@ -10,7 +10,7 @@ let userSchema = new Schema({
     name: { type: String, required: true },
     surname: { type: String, required: true },
     location: { type: String, required: true },
-    createDate: { type: Date, , default: Date.now,required: true }
+    createDate: { type: Date, default: Date.now,required: true }
 });
 
 let Users = mongoose.model('Users', userSchema);
