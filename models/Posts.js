@@ -5,8 +5,8 @@ let Schema = mongoose.Schema;
 let postsSchema = new Schema({
     title:      { type: String, required: true },
     description:   { type: String, required: true },
-    date:     { type: Date, required: true },
-    score:      { type: Number, required: true },
+    date:     { type: Date, default: Date.now, required: true },
+    score:    { type: Number, required: true },
     type:     { type: String, required: true },
     owner:     { type: String, required: true }
 });
