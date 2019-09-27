@@ -21,7 +21,7 @@ router.get('/all', async function(req,res) {
 router.post('/create', async function(req,res) {
     try {
         let { title, description, location, date, score, type} = req.body;
-        let created = await createEvent(title, description, location, date, score, type);
+        let created = await createEvent(title, description, location, date, score, type, assistants);
         res.json(created);
     }
     catch (error) {
