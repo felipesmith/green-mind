@@ -7,9 +7,9 @@ let commentsSchema = new Schema({
     username:   { type: String, required: true },
     comment:    { type: String, required: true },
     score:      { type: Number, required: true },
-    imdbID:     { type: String, required: true }
+    
 });
 
-let Comments = mongoose.model('Comments', commentsSchema);  
+let Comments = mongoose.model('Comments', commentsSchema);
 
 module.exports = Comments;

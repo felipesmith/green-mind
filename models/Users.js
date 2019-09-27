@@ -10,7 +10,11 @@ let userSchema = new Schema({
     name: { type: String, required: true },
     surname: { type: String, required: true },
     location: { type: String, required: true },
-    createDate: { type: Date, default: Date.now,required: true }
+    createDate: { type: Date, default: Date.now,required: true },
+    plastic:      { type: Number, default:0, required: true },
+    glass:   { type: Number, default:0, required: true },
+    paperboard:    { type: Number, default:0, required: true },
+    aluminium:     { type: Number, default:0, required: true }
 });
 
 let Users = mongoose.model('Users', userSchema);

@@ -8,7 +8,8 @@ let eventsSchema = new Schema({
     location:    { type: String, required: true },
     date:     { type: Date, default: Date.now, required: true },
     score:      { type: Number, default: 0, required: false },
-    type:     { type: String, required: true }
+    type:     { type: String, required: true },
+    assistants: [String]
 });
 
 let Events = mongoose.model('Events', eventsSchema);

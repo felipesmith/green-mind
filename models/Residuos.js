@@ -3,10 +3,10 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let residuosSchema = new Schema({
-    plastic:      { type: String, required: true },
-    glass:   { type: String, required: true },
-    paperboard:    { type: String, required: true },
-    aluminium:     { type: String, required: true },
+    plastic:      { type: Number, default:0, required: true },
+    glass:   { type: Number, default:0, required: true },
+    paperboard:    { type: Number, default:0, required: true },
+    aluminium:     { type: Number, default:0, required: true },
     eventID:      { type: String, required: true },
     userID:     { type: String, required: true }
 });
