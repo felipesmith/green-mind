@@ -7,7 +7,10 @@ let commentsSchema = new Schema({
     username:   { type: String, required: true },
     comment:    { type: String, required: true },
     score:      { type: Number, required: true },
-    
+    date:     { type: Date, default: Date.now, required: true },
+    eventId: { type: String, required: false },
+    postId: { type: String, required: false },
+    userId:{ type: String, required: true }
 });
 
 let Comments = mongoose.model('Comments', commentsSchema);

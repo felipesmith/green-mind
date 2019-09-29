@@ -14,7 +14,8 @@ let userSchema = new Schema({
     plastic:      { type: Number, default:0, required: true },
     glass:   { type: Number, default:0, required: true },
     paperboard:    { type: Number, default:0, required: true },
-    aluminium:     { type: Number, default:0, required: true }
+    aluminium:     { type: Number, default:0, required: true },
+    events: [String]
 });
 
 let Users = mongoose.model('Users', userSchema);

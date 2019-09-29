@@ -5,10 +5,10 @@ allEvents = async () => {
     return events;
 };
 
-createEvent = async (title, description, location, date, score, type, assistants) => {
-    let new_event = Events({ title, description, location, date, score, type, assistants });
+createEvent = async (title, description, location, date, score, type, assistants, comments, owner) => {
+    let new_event = Events({ title, description, location, date, score, type, assistants, comments, owner});
     await new_event.save();
-    return { title, description, location, date, score, type, assistants};
+    return { title, description, location, date, score, type, assistants, comments, owner};
 };
 
 eventsByUser = async (username) => {

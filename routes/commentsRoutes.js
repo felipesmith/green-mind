@@ -9,21 +9,21 @@ let { allComments,
 router.get('/all', async function(req,res) {
     try {
         let comments = await allComments();
-        res.json(comments); 
+        res.json(comments);
     }
     catch (error) {
         console.log(error);
-    } 
+    }
 });
 
 router.post('/create', async function(req,res) {
     try {
-        let { title, username, comment, score, imdbID} = req.body;
-        let created = await createComment(title, username, comment, score, imdbID);
+        let { title, username, comment, score, date, eventId, postId, userId} = req.body;
+        let created = await createComment(title, username, comment, score, date, eventId, postId, userId);
         res.json(created);
     }
     catch (error) {
-        console.log(error);    
+        console.log(error);
     }
 });
 
@@ -37,9 +37,19 @@ router.get('/title/:title', async function(req, res) {
     }
 });
 
-router.get('/imdbid/:imdbid', async function(req, res) {
+router.get('/eventsId/:eventId', async function(req, res) {
     try {
-        let comment = await commentsByImdbID(req.params.imdbid);
+        let comment = await commentsByImdbID(req.params.eventId);
+        res.json(comment);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
+router.get('/postsId/:postId', async function(req, res) {
+    try {
+        let comment = await commentsByImdbID(req.params.postId);
         res.json(comment);
     }
     catch (error) {

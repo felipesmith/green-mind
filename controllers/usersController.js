@@ -7,10 +7,11 @@ allUsers = async (req, res) => {
     return users;
 };
 
-createUser = async (username, userpass, age, gender, name, surname, location,createDate ) => {
+let mongoose = require('mongoose');
+createUser = async (username, userpass, age, gender, name, surname, location,createDate, plastic, glass, paperboard, aluminium, events ) => {
     let password = bcrypt.hashSync(userpass, salt);
     /*let createDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');*/
-    let user = Users({username, password, age, gender, name, surname, location, createDate});
+    let user = Users({username, password, age, gender, name, surname, location, createDate, plastic, glass, paperboard, aluminium, events });
     await user.save();
     return { username };
 };
@@ -20,6 +21,11 @@ logInUser = async (username, password) => {
     return { User: bcrypt.compareSync(password, user.password) };
 };
 
+searchUser = async (username) => {
+    let user = await Users.find({username}).sort({ '_id': -1 });
+    return user;
+}
+
 changePasswordUser = async (username, password) => {
     let user = await Users.findOne({username});
     user.password = bcrypt.hashSync(password, salt);
@@ -27,4 +33,4 @@ changePasswordUser = async (username, password) => {
     return { username };
 };
 
-module.exports =  { allUsers, createUser, logInUser, changePasswordUser };
+module.exports =  { allUsers, createUser, logInUser, changePasswordUser, searchUser };
