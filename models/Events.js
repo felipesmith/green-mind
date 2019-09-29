@@ -1,5 +1,7 @@
 let mongoose = require('mongoose');
-var Comments = require('./Comments.js');
+let Comments = require('./Comments.js');
+
+let comments ={ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' };
 
 let Schema = mongoose.Schema;
 
@@ -11,7 +13,7 @@ let eventsSchema = new Schema({
     score:      { type: Number, default: 0, required: false },
     type:     { type: String, required: true },
     assistants: [String],
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }],
+    comments: [comments],
     owner: { type: String, required: true }
 });
 
