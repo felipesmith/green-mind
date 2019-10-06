@@ -22,7 +22,7 @@ logInUser = async (username, password) => {
 };
 
 searchUser = async (username) => {
-    let user = await Users.findOne({username});
+    let comments = await Comments.find({username}).sort({ '_id': -1 });
     console.log(user);
     return user;
 }
