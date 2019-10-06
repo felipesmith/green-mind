@@ -23,6 +23,7 @@ logInUser = async (username, password) => {
 
 searchUser = async (username) => {
     let user = await Users.findOne({username});
+    console.log(user);
     return user;
 }
 
