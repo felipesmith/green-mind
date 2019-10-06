@@ -22,7 +22,7 @@ logInUser = async (username, password) => {
 };
 
 searchUser = async (username) => {
-    let user = await Users.find({username});
+    let user = await Users.findOne({username});
     return user;
 }
 
