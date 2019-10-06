@@ -38,6 +38,7 @@ router.post('/login', async function(req, res) {
 router.get('/user/:user', async function(req, res) {
     try {
         let user = await searchUser(req.body.username);
+        console.log(user);
         res.json(user);
     }
     catch (error) {
