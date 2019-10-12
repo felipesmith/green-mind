@@ -49,6 +49,7 @@ router.get('/type/:type', async function(req, res) {
     }
 });
 
+
 router.get('/location/:location', async function(req, res) {
     try {
         let events = await commentsByLocation(req.params.location);
@@ -58,5 +59,21 @@ router.get('/location/:location', async function(req, res) {
         console.log(error);
     }
 });
+
+router.get('/event/:_id', async function(req, res) {
+    try {
+        let event = await searchEvent(req.params._id);
+        console.log(events);
+        res.json(event);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
+
+
+
+
 
 module.exports = router;

@@ -31,6 +31,17 @@ eventsByDate = async (date) => {
     return events;
 }
 
+searchEvent = async (_id ) => {
+    let event = await Events.find({_id}).sort({ '_id': -1 });
+    console.log(event);
+    return event;
+}
+
+/*addComment = async (user, id) =>{
+  let event = await Events.find({id}).sort({ '_id': -1 });
+}*/
+
+
 rankEvents = (events) => {
     let total_score = 0;
     let votes = 0;
