@@ -56,4 +56,4 @@ rankEvents = (events) => {
     return { rating , votes };
 };
 
-module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate};
+module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate,searchEvent};

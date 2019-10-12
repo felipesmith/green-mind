@@ -63,7 +63,7 @@ router.get('/location/:location', async function(req, res) {
 router.get('/event/:_id', async function(req, res) {
     try {
         let event = await searchEvent(req.params._id);
-        console.log(events);
+        console.log(event);
         res.json(event);
     }
     catch (error) {
