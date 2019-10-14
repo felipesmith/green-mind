@@ -26,6 +26,12 @@ postsByDate = async (date) => {
     return posts;
 }
 
+searchPost = async (_id ) => {
+    let post = await Posts.find({_id}).sort({ '_id': -1 });
+    console.log(post);
+    return post;
+}
+
 rankPosts = (posts) => {
     let total_score = 0;
     let votes = 0;
@@ -40,4 +46,4 @@ rankPosts = (posts) => {
     return { rating , votes };
 };
 
-module.exports =  {allPosts, createPost, postsByUser, postsByType, postsByDate};
+module.exports =  {allPosts, createPost, postsByUser, postsByType, postsByDate,searchPost};

@@ -10,7 +10,8 @@ let eventsSchema = new Schema({
     score:      { type: Number, default: 0, required: false },
     type:     { type: String, required: true },
     assistants: [String],
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments', default :[]}],
+    comments: [String],
+    /*comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments', default :[]}],*/
     owner: { type: String, required: true }
 });
 

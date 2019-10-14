@@ -17,7 +17,7 @@ commentsByTitle = async (title) => {
     return { rating, votes, comments };
 };
 
-commentsByEvent = async (eventId) => {
+commentsByEventId = async (eventId) => {
     let comments = await Comments.find({ eventId }).sort({ '_id': -1 });
     let { rating , votes } = rankComments(comments);
     return { rating, votes, comments };
@@ -27,6 +27,12 @@ commentsByUser = async (username) => {
     let comments = await Comments.find({username}).sort({ '_id': -1 });
     return comments;
 }
+
+commentsByPostId = async (postId) => {
+    let comments = await Comments.find({ postId }).sort({ '_id': -1 });
+    let { rating , votes } = rankComments(comments);
+    return { rating, votes, comments };
+};
 
 rankComments = (comments) => {
     let total_score = 0;
@@ -42,4 +48,4 @@ rankComments = (comments) => {
     return { rating , votes };
 };
 
-module.exports =  {allComments, createComment, commentsByTitle, commentsByUser, commentsByEvent};
+module.exports =  {allComments, createComment, commentsByTitle, commentsByUser, commentsByEventId , commentsByPostId};

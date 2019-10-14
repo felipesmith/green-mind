@@ -48,6 +48,17 @@ router.get('/type/:type', async function(req, res) {
     }
 });
 
+router.get('/post/:_id', async function(req, res) {
+    try {
+        let post = await searchPost(req.params._id);
+        console.log(post);
+        res.json(post);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
 
 
 module.exports = router;

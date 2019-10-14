@@ -39,7 +39,7 @@ router.get('/title/:title', async function(req, res) {
 
 router.get('/eventsId/:eventId', async function(req, res) {
     try {
-        let comment = await commentsByImdbID(req.params.eventId);
+        let comment = await commentsByEventId(req.params.eventId);
         res.json(comment);
     }
     catch (error) {
@@ -49,7 +49,7 @@ router.get('/eventsId/:eventId', async function(req, res) {
 
 router.get('/postsId/:postId', async function(req, res) {
     try {
-        let comment = await commentsByImdbID(req.params.postId);
+        let comment = await commentsByPostId(req.params.postId);
         res.json(comment);
     }
     catch (error) {

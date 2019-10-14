@@ -10,7 +10,8 @@ let postsSchema = new Schema({
     score:    { type: Number,default: 0, required: false },
     type:     { type: String, required: true },
     owner:     { type: String, required: true },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }]
+    comments: [String]
+    //comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments' }]
 });
 
 let Posts = mongoose.model('Posts', postsSchema);
