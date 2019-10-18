@@ -35,7 +35,7 @@ changePasswordUser = async (username, password) => {
 };
 
 assistEvent = async (eventId, username) => {
-    let user = await Users.findOne({username});
+    let user = await Users.find({username}).sort({ '_id': -1 });
     user.events.push(eventId);
     await user.save();
     console.log(user.events);
