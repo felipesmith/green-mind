@@ -46,6 +46,17 @@ router.get('/user/:user', async function(req, res) {
     }
 });
 
+router.post('/assist', async function(req, res) {
+    try {
+        let status = await assistEvent(req.body.eventId, req.body.userId);
+        res.json(status);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
+
 router.post('/update', async function(req, res) {
     try {
         let status = await changePasswordUser(req.body.username, req.body.password);
