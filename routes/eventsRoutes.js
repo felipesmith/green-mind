@@ -71,6 +71,16 @@ router.get('/event/:_id', async function(req, res) {
     }
 });
 
+router.post('/assistants', async function(req, res) {
+    try {
+        let status = await assistUser(req.body.userId, req.body._id);
+        res.json(status);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
 
 
 

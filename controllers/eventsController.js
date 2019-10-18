@@ -37,9 +37,14 @@ searchEvent = async (_id ) => {
     return event;
 }
 
-/*addComment = async (user, id) =>{
-  let event = await Events.find({id}).sort({ '_id': -1 });
-}*/
+assistUser = async (userId, _id) => {
+    let event = await Events.findOne({_id})
+    console.log(event.assistants);
+    console.log(event);
+    event.assistants.push(userId);
+    await event.save();
+    return { event };
+};
 
 
 rankEvents = (events) => {
@@ -56,4 +61,4 @@ rankEvents = (events) => {
     return { rating , votes };
 };
 
-module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate,searchEvent};
+module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate,searchEvent,assistUser};
