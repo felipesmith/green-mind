@@ -20,8 +20,8 @@ router.get('/all', async function(req,res) {
 
 router.post('/create', async function(req,res) {
     try {
-        let { title, description, location, date, score, type, assistants, comments, owner} = req.body;
-        let created = await createEvent(title, description, location, date, score, type, assistants,comments, owner);
+        let { title, description, location, date,createDate, score, type, assistants, comments, owner} = req.body;
+        let created = await createEvent(title, description, location, date,createDate, score, type, assistants,comments, owner);
         res.json(created);
     }
     catch (error) {
@@ -31,7 +31,7 @@ router.post('/create', async function(req,res) {
 
 router.get('/date/:date', async function(req, res) {
     try {
-        let events = await commentsByTitle(req.params.date);
+        let events = await eventsByDate(req.params.date);
         res.json(events);
     }
     catch (error) {
@@ -41,7 +41,7 @@ router.get('/date/:date', async function(req, res) {
 
 router.get('/type/:type', async function(req, res) {
     try {
-        let events = await commentsByType(req.params.type);
+        let events = await eventsByType(req.params.type);
         res.json(events);
     }
     catch (error) {
