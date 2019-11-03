@@ -5,10 +5,10 @@ allPosts = async () => {
     return posts;
 };
 
-createPost = async (title, description, date, score, type, owner, comments) => {
-    let new_post = Posts({ title, description, date, score, type, owner, comments });
+createPost = async (title, description, createDate, score, type, owner, comments) => {
+    let new_post = Posts({ title, description, createDate, score, type, owner, comments });
     await new_post.save();
-    return { title, description, date, score, type, owner, comments };
+    return { title, description, createDate, score, type, owner, comments };
 };
 
 postsByUser = async (username) => {
@@ -21,8 +21,8 @@ postsByType = async (type) => {
     return posts;
 }
 
-postsByDate = async (date) => {
-    let posts = await Posts.find({date}).sort({ '_id': -1 });
+postsByDate = async (createDate) => {
+    let posts = await Posts.find({createDate}).sort({ '_id': -1 });
     return posts;
 }
 

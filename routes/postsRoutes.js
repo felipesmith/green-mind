@@ -19,8 +19,8 @@ router.get('/all', async function(req,res) {
 
 router.post('/create', async function(req,res) {
     try {
-        let { title, description, date, score, type, owner, comments} = req.body;
-        let created = await createPost(title, description, date, score, type, owner, comments);
+        let { title, description, createDate, score, type, owner, comments} = req.body;
+        let created = await createPost(title, description, createDate, score, type, owner, comments);
         res.json(created);
     }
     catch (error) {
@@ -28,9 +28,9 @@ router.post('/create', async function(req,res) {
     }
 });
 
-router.get('/date/:date', async function(req, res) {
+router.get('/date/:createDate', async function(req, res) {
     try {
-        let posts = await commentsByTitle(req.params.date);
+        let posts = await postsByDate(req.params.createDate);
         res.json(posts);
     }
     catch (error) {
@@ -40,7 +40,7 @@ router.get('/date/:date', async function(req, res) {
 
 router.get('/type/:type', async function(req, res) {
     try {
-        let posts = await commentsByType(req.params.type);
+        let posts = await postsByType(req.params.type);
         res.json(posts);
     }
     catch (error) {
