@@ -10,7 +10,7 @@ let eventsSchema = new Schema({
     createDate: { type: Date, default: Date.now,required: true },
     score:      { type: Number, default: 0, required: false },
     type:     { type: String, required: true },
-    assistants: [String],
+    assistants: [{type: String , unique: true }],//[String],
     comments: [String],
     /*comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments', default :[]}],*/
     owner: { type: String, required: true }
