@@ -1,5 +1,8 @@
 let router = require('express').Router();
 let multer = require('multer');
+const upload = multer({
+  dest: "../temp"
+});
 let path = require('path');
 let {allUsers,
     createUser,
@@ -33,6 +36,7 @@ router.post('/login', async function(req, res) {
     try {
         let status = await logInUser(req.body.username, req.body.password);
         res.json(status);
+        console.log(__dirname);
     }
     catch (error) {
         console.log(error);
@@ -71,15 +75,35 @@ router.post('/update', async function(req, res) {
     }
 });
 
+router.post(
+  "/images/upload",
+  upload.single("profile_image"),
+  (req, res) => {
+    const tempPath = req.file.path;
+    const targetPath = path.join(__dirname, "./uploads/image.png");
 
-// router.post('/post', upload.single('image'), async function (req, res) {
-//   const imagePath = path.join(__dirname, '/public/images');
-//   const fileUpload = new Resize(imagePath);
-//   if (!req.file) {
-//     res.status(401).json({error: 'Please provide an image'});
-//   }
-//   const filename = await fileUpload.save(req.file.buffer);
-//   return res.status(200).json({ name: filename });
-// });
+    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
+      fs.rename(tempPath, targetPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(200)
+          .contentType("text/plain")
+          .end("File uploaded!");
+      });
+    } else {
+      fs.unlink(tempPath, err => {
+        if (err) return handleError(err, res);
+
+        res
+          .status(403)
+          .contentType("text/plain")
+          .end("Only .png files are allowed!");
+      });
+    }
+  }
+);
+
+
 
 module.exports = router;
