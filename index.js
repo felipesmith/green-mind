@@ -8,6 +8,8 @@ let commentsRoutes  = require("./routes/commentsRoutes");
 let eventsRoutes  = require("./routes/eventsRoutes");
 let postsRoutes  = require("./routes/postsRoutes");
 
+let fs = require("fs");
+
 let app             = express();
 
 let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@54.233.217.136:27017/greenmind";

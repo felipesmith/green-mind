@@ -1,5 +1,7 @@
 let router = require('express').Router();
 let multer = require('multer');
+
+let fs = require("fs");
 const upload = multer({
   dest: "app/temp"
 });
