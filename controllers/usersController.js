@@ -1,6 +1,8 @@
 let Users   = require("../models/Users");
 let bcrypt  = require('bcryptjs');
 let salt    = bcrypt.genSaltSync(10);
+let multer = require("multer");
+
 
 allUsers = async (req, res) => {
     let users = await Users.find({});
