@@ -78,10 +78,6 @@ router.post('/update', async function(req, res) {
 });
 
 const handleError = (err, res) => {
-  console.log('iniciolog');
-  console.log(err);
-  console.log(res);
-  console.log('finlog');
   res
     .status(500)
     .contentType("text/plain")
@@ -102,7 +98,7 @@ router.post(
         res
           .status(200)
           .contentType("text/plain")
-          .end("File uploaded!");
+          .end();
       });
     } else {
       fs.unlink(tempPath, err => {
