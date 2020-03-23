@@ -8,8 +8,8 @@ const upload = multer({
 let path = require('path');
 const AWS = require('aws-sdk');
 const s3 = new AWS.S3({
-  accessKeyId: AKIARWULITKAUL5X7XTC,
-  secretAccessKey: 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
+  accessKeyId: 'AKIARWULITKAUL5X7XTC',
+  secretAccessKey: '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'
 });
 let {allUsers,
     createUser,
