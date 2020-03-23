@@ -105,7 +105,7 @@ router.post(
   .then(response => {
     console.log(response);
     console.log(
-      The URL is ${s3.getSignedUrl('getObject', { Bucket: this.bucket, Key: targetPath })}
+      `The URL is ${s3.getSignedUrl('getObject', { Bucket: this.bucket, Key: targetPath })}`
     )
     res
       .status(200)
