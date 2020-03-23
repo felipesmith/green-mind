@@ -2,12 +2,11 @@ let express         = require('express')
 let bodyParser      = require('body-parser');
 let cors            = require('cors');
 let mongoose        = require('mongoose');
-let multer = require('multer');
+let multer          = require('multer');
 let usersRoutes     = require("./routes/usersRoutes")
 let commentsRoutes  = require("./routes/commentsRoutes");
 let eventsRoutes  = require("./routes/eventsRoutes");
 let postsRoutes  = require("./routes/postsRoutes");
-let upload = multer({dest: __dirname + '/uploads/images'});
 
 let app             = express();
 
@@ -27,42 +26,6 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.static('public'));
-app.post('/upload', upload.single('photo'), (req, res) => {
-    if(req.file) {
-        res.json(req.file);
-    }
-    else throw 'error';
-});
-
-app.post(
-  "/upload",
-  upload.single("file" /* name attribute of <file> element in your form */),
-  (req, res) => {
-    const tempPath = req.file.path;
-    const targetPath = path.join(__dirname, "./uploads/image.png");
-
-    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-      fs.rename(tempPath, targetPath, err => {
-        if (err) return handleError(err, res);
-
-        res
-          .status(200)
-          .contentType("text/plain")
-          .end("File uploaded!");
-      });
-    } else {
-      fs.unlink(tempPath, err => {
-        if (err) return handleError(err, res);
-
-        res
-          .status(403)
-          .contentType("text/plain")
-          .end("Only .png files are allowed!");
-      });
-    }
-  }
-);
-
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

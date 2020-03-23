@@ -1,8 +1,13 @@
 let router = require('express').Router();
+let multer = require('multer');
+let path = require('path');
+let Resize = require('../Resize');
 let {allUsers,
     createUser,
     logInUser,
-    changePasswordUser} = require('../controllers/usersController');
+    changePasswordUser,
+    uploadPhoto
+    } = require('../controllers/usersController');
 
 router.get('/all', async function(req, res) {
     try {
@@ -24,6 +29,12 @@ router.post('/create', async function(req,res) {
         console.log(error);
     }
 });
+
+router.post('/post', upload.single('image'), async function (req, res) {
+  await console.log('post');
+});
+
+
 
 router.post('/login', async function(req, res) {
     try {
