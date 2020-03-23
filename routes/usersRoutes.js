@@ -97,7 +97,7 @@ router.post(
     // const targetPath = path.join(__dirname, "../uploads/image.png");
       const targetPath = "image_${new Date().getTime()}.png";
       s3.putObject({
-  Bucket: this.bucket,
+  Bucket: bucket,
   Body: fs.readFileSync(tempPath),
   Key: targetPath
 })
@@ -105,7 +105,7 @@ router.post(
   .then(response => {
     console.log(response);
     console.log(
-      `The URL is ${s3.getSignedUrl('getObject', { Bucket: this.bucket, Key: targetPath })}`
+      `The URL is ${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`
     )
     res
       .status(200)
