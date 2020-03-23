@@ -77,6 +77,17 @@ router.post('/update', async function(req, res) {
     }
 });
 
+const handleError = (err, res) => {
+  console.log('iniciolog');
+  console.log(err);
+  console.log(res);
+  console.log('finlog');
+  res
+    .status(500)
+    .contentType("text/plain")
+    .end("Oops! Something went wrong!");
+};
+
 router.post(
   "/images/upload",
   upload.single("profile_image"),
