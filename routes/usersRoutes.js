@@ -95,7 +95,7 @@ router.post(
   (req, res) => {
     const tempPath = req.file.path;
     // const targetPath = path.join(__dirname, "../uploads/image.png");
-      const targetPath = "image_${new Date().getTime()}.png";
+      const targetPath = `image_${new Date().getTime()}.png`;
       s3.putObject({
   Bucket: bucket,
   Body: fs.readFileSync(tempPath),
