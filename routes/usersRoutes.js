@@ -1,11 +1,16 @@
 let router = require('express').Router();
 let multer = require('multer');
-
+const bucket = 'greenmindbucket';
 let fs = require("fs");
 const upload = multer({
   dest: "app/temp"
 });
 let path = require('path');
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3({
+  accessKeyId: AKIARWULITKAUL5X7XTC,
+  secretAccessKey: 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
+});
 let {allUsers,
     createUser,
     logInUser,
@@ -90,26 +95,45 @@ router.post(
   (req, res) => {
     const tempPath = req.file.path;
     // const targetPath = path.join(__dirname, "../uploads/image.png");
-      const targetPath = "app/uploads/image.png";
-    if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-      fs.rename(tempPath, targetPath, err => {
-        if (err) return handleError(err, res);
-
-        res
-          .status(200)
-          .contentType("text/plain")
-          .end();
-      });
-    } else {
-      fs.unlink(tempPath, err => {
-        if (err) return handleError(err, res);
-
-        res
-          .status(403)
-          .contentType("text/plain")
-          .end("Only .png files are allowed!");
-      });
-    }
+      const targetPath = "image_${new Date().getTime()}.png";
+      this.s3.putObject({
+  Bucket: this.bucket,
+  Body: fs.readFileSync(tempPath),
+  Key: targetPath
+})
+  .promise()
+  .then(response => {
+    console.log(done! - , response)
+    console.log(
+      The URL is ${s3.getSignedUrl('getObject', { Bucket: this.bucket, Key: targetPath })}
+    )
+    res
+      .status(200)
+      .contentType("text/plain")
+      .end();
+  })
+  .catch(err => {
+    console.log('failed:', err)
+  })
+    // if (path.extname(req.file.originalname).toLowerCase() === ".png") {
+    //   fs.rename(tempPath, targetPath, err => {
+    //     if (err) return handleError(err, res);
+    //
+        // res
+        //   .status(200)
+        //   .contentType("text/plain")
+        //   .end();
+    //   });
+    // } else {
+    //   fs.unlink(tempPath, err => {
+    //     if (err) return handleError(err, res);
+    //
+    //     res
+    //       .status(403)
+    //       .contentType("text/plain")
+    //       .end("Only .png files are allowed!");
+    //   });
+    // }
   }
 );
 
