@@ -7,9 +7,10 @@ const upload = multer({
 });
 let path = require('path');
 const AWS = require('aws-sdk');
+const envJson = require(''../process.env.json');
 const s3 = new AWS.S3({
-  accessKeyId: 'AKIARWULITKAUL5X7XTC',
-  secretAccessKey: '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'
+  accessKeyId: envJson.s3.accessKeyId,
+  secretAccessKey: envJson.s3.secretAccessKey
 });
 let {allUsers,
     createUser,
