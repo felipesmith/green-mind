@@ -8,10 +8,10 @@ const upload = multer({
 });
 let path = require('path');
 const AWS = require('aws-sdk');
-const envJson = require('../process.env');
+//const envJson = require('../process.env');
 const s3 = new AWS.S3({
-  accessKeyId: envJson.s3.accessKeyId,
-  secretAccessKey: envJson.s3.secretAccessKey
+  accessKeyId: process.env.accessKeyId,
+  secretAccessKey: process.env.secretAccessKey
 });
 let {allUsers,
     createUser,
