@@ -2,12 +2,13 @@ let router = require('express').Router();
 let multer = require('multer');
 const bucket = 'greenmindbucket';
 let fs = require("fs");
+require('dotenv').config();
 const upload = multer({
   dest: "app/temp"
 });
 let path = require('path');
 const AWS = require('aws-sdk');
-const envJson = require('../process.env.json');
+const envJson = require('../process.env');
 const s3 = new AWS.S3({
   accessKeyId: envJson.s3.accessKeyId,
   secretAccessKey: envJson.s3.secretAccessKey
