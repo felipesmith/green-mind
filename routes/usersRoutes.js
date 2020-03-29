@@ -112,7 +112,6 @@ router.post(
       .status(200)
       .contentType("text/plain")
       .end();
-      .json(`${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
   })
   .catch(err => {
     console.log('failed:', err)
