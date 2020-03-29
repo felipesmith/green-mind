@@ -7,6 +7,7 @@ let usersRoutes     = require("./routes/usersRoutes")
 let commentsRoutes  = require("./routes/commentsRoutes");
 let eventsRoutes  = require("./routes/eventsRoutes");
 let postsRoutes  = require("./routes/postsRoutes");
+require('dotenv').config({path: 'process.env.json'})
 
 let fs = require("fs");
 

@@ -116,25 +116,6 @@ router.post(
   .catch(err => {
     console.log('failed:', err)
   })
-    // if (path.extname(req.file.originalname).toLowerCase() === ".png") {
-    //   fs.rename(tempPath, targetPath, err => {
-    //     if (err) return handleError(err, res);
-    //
-        // res
-        //   .status(200)
-        //   .contentType("text/plain")
-        //   .end();
-    //   });
-    // } else {
-    //   fs.unlink(tempPath, err => {
-    //     if (err) return handleError(err, res);
-    //
-    //     res
-    //       .status(403)
-    //       .contentType("text/plain")
-    //       .end("Only .png files are allowed!");
-    //   });
-    // }
   }
 );
 
