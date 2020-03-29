@@ -7,7 +7,7 @@ const upload = multer({
 });
 let path = require('path');
 const AWS = require('aws-sdk');
-const envJson = require(''../process.env.json');
+const envJson = require('../process.env.json');
 const s3 = new AWS.S3({
   accessKeyId: envJson.s3.accessKeyId,
   secretAccessKey: envJson.s3.secretAccessKey
@@ -112,6 +112,7 @@ router.post(
       .status(200)
       .contentType("text/plain")
       .end();
+      .json(`${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
   })
   .catch(err => {
     console.log('failed:', err)
