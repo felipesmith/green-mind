@@ -55,4 +55,4 @@ assistEvent = async (eventId, username) => {
 };
 
 
-module.exports =  { allUsers, createUser, logInUser, changePasswordUser, searchUser,assistEvent };
+module.exports =  { allUsers, createUser, logInUser, changePasswordUser, searchUser,assistEvent,updatePhoto };
