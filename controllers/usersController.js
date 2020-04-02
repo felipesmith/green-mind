@@ -10,10 +10,10 @@ allUsers = async (req, res) => {
 };
 
 let mongoose = require('mongoose');
-createUser = async (username, userpass, age, gender, name, surname, location,createDate, plastic, glass, paperboard, aluminium, events ) => {
+createUser = async (username, userpass, age, gender, name, surname, location,createDate, plastic, glass, paperboard, aluminium, events,image) => {
     let password = bcrypt.hashSync(userpass, salt);
     /*let createDate = new Date().toJSON().slice(0,10).replace(/-/g,'/');*/
-    let user = Users({username, password, age, gender, name, surname, location, createDate, plastic, glass, paperboard, aluminium, events });
+    let user = Users({username, password, age, gender, name, surname, location, createDate, plastic, glass, paperboard, aluminium, events,image });
     await user.save();
     return { username };
 };
