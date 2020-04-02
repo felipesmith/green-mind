@@ -90,11 +90,10 @@ const handleError = (err, res) => {
     .contentType("text/plain")
     .end("Oops! Something went wrong!");
 };
-
 router.post(
   "/images/upload",
   upload.single("profile_image"),
-  (req, res) => {
+  async function(req, res){
     const tempPath = req.file.path;
     // const targetPath = path.join(__dirname, "../uploads/image.png");
       const targetPath = `image_${new Date().getTime()}.png`;
@@ -109,7 +108,7 @@ router.post(
     console.log(
       `The URL is ${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`
     )
-    let status =  changePasswordUser(req.body.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
+    let status =   changePasswordUser(req.body.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
     res
       .status(200)
       .contentType("text/plain")
@@ -121,6 +120,36 @@ router.post(
   })
   }
 );
+// router.post(
+//   "/images/upload",
+//   upload.single("profile_image"),
+//   (req, res) => {
+//     const tempPath = req.file.path;
+//     // const targetPath = path.join(__dirname, "../uploads/image.png");
+//       const targetPath = `image_${new Date().getTime()}.png`;
+//       s3.putObject({
+//   Bucket: bucket,
+//   Body: fs.readFileSync(tempPath),
+//   Key: targetPath
+// })
+//   .promise()
+//   .then(response => {
+//     console.log(response);
+//     console.log(
+//       `The URL is ${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`
+//     )
+//     let status =  changePasswordUser(req.body.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
+//     res
+//       .status(200)
+//       .contentType("text/plain")
+//       .json(status)
+//       .end();
+//   })
+//   .catch(err => {
+//     console.log('failed:', err)
+//   })
+//   }
+// );
 
 
 
