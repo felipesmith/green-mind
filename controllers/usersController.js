@@ -43,7 +43,7 @@ updatePhoto = async(username,image)=>{
   user.image = image;
   await user.save();
   return {username};
-}
+};
 
 assistEvent = async (eventId, username) => {
     let user = await Users.findOne({username})
