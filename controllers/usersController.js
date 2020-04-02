@@ -36,6 +36,13 @@ changePasswordUser = async (username, password) => {
     return { username };
 };
 
+updatePhoto = async(username,image)=>{
+  let user = await Users.findOne({username});
+  user.image = image;
+  await user.save();
+  return {username};
+}
+
 assistEvent = async (eventId, username) => {
     let user = await Users.findOne({username})
     console.log(user.events);

@@ -109,9 +109,11 @@ router.post(
     console.log(
       `The URL is ${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`
     )
+    let status =  changePasswordUser(req.body.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
     res
       .status(200)
       .contentType("text/plain")
+      .json(status)
       .end();
   })
   .catch(err => {

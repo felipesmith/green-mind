@@ -15,7 +15,8 @@ let userSchema = new Schema({
     glass:   { type: Number, default:0, required: true },
     paperboard:    { type: Number, default:0, required: true },
     aluminium:     { type: Number, default:0, required: true },
-    events: [{type: String , unique: true }]
+    events: [{type: String , unique: true }],
+    image: { type: String, default:'https://greenmindbucket.s3.sa-east-1.amazonaws.com/image_1585670384567.png',required: true }
 });
 
 let Users = mongoose.model('Users', userSchema);
