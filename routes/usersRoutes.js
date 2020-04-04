@@ -96,7 +96,7 @@ router.post(
   "/images/upload",
   upload.any(),
   (req, res) => {
-    console.log(req);
+    
     const tempPath = req.files[0].path;
     //const tempPath = req.body.formData.file.path;
     // const targetPath = path.join(__dirname, "../uploads/image.png");
