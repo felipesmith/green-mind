@@ -96,7 +96,7 @@ router.post(
   "/images/upload",
   upload.single("profile_image"),
   (req, res) => {
-    console.log(req);
+    console.log(req.body);
     const tempPath = req.file.path;
     // const targetPath = path.join(__dirname, "../uploads/image.png");
       const targetPath = `image_${new Date().getTime()}.png`;
