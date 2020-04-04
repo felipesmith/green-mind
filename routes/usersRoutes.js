@@ -94,9 +94,10 @@ const handleError = (err, res) => {
 
 router.post(
   "/images/upload",
-  upload.single("profile_image"),
+  upload.any(),
   (req, res) => {
-    const tempPath = req.file.path; 
+    console.log(req);
+    const tempPath = req.files[0].path;
     //const tempPath = req.body.formData.file.path;
     // const targetPath = path.join(__dirname, "../uploads/image.png");
       const targetPath = `image_${new Date().getTime()}.png`;
@@ -111,7 +112,7 @@ router.post(
     console.log(
       `The URL is ${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`
     )
-    let status =  updatePhoto(req.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
+    let status =  updatePhoto(req.files.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
     res
       .status(200)
       .contentType("text/plain")
