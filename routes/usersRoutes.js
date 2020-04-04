@@ -108,12 +108,12 @@ router.post(
 })
   .promise()
   .then(response => {
-    let nachito = `${bucket}/${targetPath}`
+
     console.log(response);
     console.log(
-      `The URL is ${s3.getResourceUrl(bucket, nachito)}`
-    )
-    let status =  updatePhoto(req.body.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath })}`);
+      `The URL is ${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath }).split('?')[0]}`
+    );
+    let status =  updatePhoto(req.body.username, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath }).split('?')[0]}`);
     res
       .status(200)
       .contentType("text/plain")
