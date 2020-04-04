@@ -8,9 +8,9 @@ let commentsSchema = new Schema({
     comment:    { type: String, required: true },
     score:      { type: Number, required: true },
     date:     { type: Date, default: Date.now, required: true },
-    eventId: { type: String, required: false },
-    postId: { type: String, required: false },
-    userId:{ type: String, required: true }
+    eventId: { type: String, default:'', required: false },
+    postId: { type: String, default:'',required: false },
+    userId:{ type: String, default:'',required: true }
 });
 
 let Comments = mongoose.model('Comments', commentsSchema);
