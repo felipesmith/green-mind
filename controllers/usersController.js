@@ -38,8 +38,8 @@ changePasswordUser = async (username, password) => {
 
 updatePhoto = async(username,image)=>{
   let user = await Users.findOne({username});
-  console.log(image);
-  console.log(user);
+  console.log("Esta es la imagen"+image);
+  console.log("Este es el user" +user);
   user.image = image;
   await user.save();
   return {username};
