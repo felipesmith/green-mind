@@ -30,7 +30,7 @@ searchUser = async (username) => {
 }
 
 searchUserById = async (userId) => {
-    let user = await Users.find({userId}).sort({ '_id': -1 });
+    let user = await Users.findById({userId}).sort({ '_id': -1 });
     console.log(user);
     return user;
 };

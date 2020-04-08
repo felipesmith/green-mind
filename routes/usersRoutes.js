@@ -43,22 +43,22 @@ router.post('/create', async function(req,res) {
 });
 
 
-router.get('/userId/:userId', async function(req, res) {
+router.post('/login', async function(req, res) {
     try {
-        let user = await searchUserById(req.params.userId);
-        console.log(user);
-        res.json(user);
+        let status = await logInUser(req.body.username, req.body.password);
+        res.json(status);
+        console.log(__dirname);
     }
     catch (error) {
         console.log(error);
     }
 });
 
-router.post('/login', async function(req, res) {
+router.get('/userId/:userId', async function(req, res) {
     try {
-        let status = await logInUser(req.body.username, req.body.password);
-        res.json(status);
-        console.log(__dirname);
+        let user = await searchUser(req.params.userId);
+        console.log(user);
+        res.json(user);
     }
     catch (error) {
         console.log(error);
