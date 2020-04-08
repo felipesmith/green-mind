@@ -29,11 +29,11 @@ searchUser = async (username) => {
     return user;
 }
 
-searchUserById = async (userId) => {
-    let user = await Users.findById({userId}).sort({ '_id': -1 });
+searchUserById = async (_id ) => {
+    let user = await Users.find({_id}).sort({ '_id': -1 });
     console.log(user);
     return user;
-};
+}
 
 
 changePasswordUser = async (username, password) => {

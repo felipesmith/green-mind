@@ -54,9 +54,10 @@ router.post('/login', async function(req, res) {
     }
 });
 
-router.get('/userId/:userId', async function(req, res) {
+
+router.get('/userId/:_id', async function(req, res) {
     try {
-        let user = await searchUser(req.params.userId);
+        let user = await searchEvent(req.params._id);
         console.log(user);
         res.json(user);
     }
