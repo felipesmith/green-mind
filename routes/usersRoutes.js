@@ -57,7 +57,7 @@ router.post('/login', async function(req, res) {
 
 router.get('/userId/:_id', async function(req, res) {
     try {
-        let user = await searchEvent(req.params._id);
+        let user = await searchUserById(req.params._id);
         console.log(user);
         res.json(user);
     }
