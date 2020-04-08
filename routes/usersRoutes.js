@@ -46,6 +46,7 @@ router.post('/create', async function(req,res) {
 router.get('/userId/:userId', async function(req, res) {
     try {
         let user = await searchUserById(req.params.userId);
+        console.log(user);
         res.json(user);
     }
     catch (error) {
