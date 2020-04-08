@@ -29,6 +29,13 @@ searchUser = async (username) => {
     return user;
 }
 
+searchUserById = async (userId) => {
+    let user = await Users.find({ userId }).sort({ '_id': -1 });
+    console.log(user);
+    return user;
+};
+
+
 changePasswordUser = async (username, password) => {
     let user = await Users.findOne({username});
     user.password = bcrypt.hashSync(password, salt);
@@ -55,4 +62,4 @@ assistEvent = async (eventId, username) => {
 };
 
 
-module.exports =  { allUsers, createUser, logInUser, changePasswordUser, searchUser,assistEvent,updatePhoto };
+module.exports =  { allUsers, createUser, logInUser, changePasswordUser, searchUser,assistEvent,updatePhoto,searchUserById };

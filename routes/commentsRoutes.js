@@ -6,6 +6,10 @@ let { allComments,
     commentsByImdbID,
     commentsByUser } = require('../controllers/commentsController');
 
+let {
+  searchUser
+} = require ('../controllers/usersController');
+
 router.get('/all', async function(req,res) {
     try {
         let comments = await allComments();
@@ -46,6 +50,7 @@ router.get('/eventsId/:eventId', async function(req, res) {
         console.log(error);
     }
 });
+
 
 router.get('/postsId/:postId', async function(req, res) {
     try {

@@ -17,7 +17,8 @@ let {allUsers,
     createUser,
     logInUser,
     changePasswordUser,
-    updatePhoto
+    updatePhoto,
+    searchUserById
     } = require('../controllers/usersController');
 
 router.get('/all', async function(req, res) {
@@ -41,6 +42,16 @@ router.post('/create', async function(req,res) {
     }
 });
 
+
+router.get('/userId/:userId', async function(req, res) {
+    try {
+        let user = await searchUserById(req.params.userId);
+        res.json(user);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
 
 router.post('/login', async function(req, res) {
     try {
@@ -96,7 +107,7 @@ router.post(
   "/images/upload",
   upload.any(),
   (req, res) => {
-    
+
     const tempPath = req.files[0].path;
     //const tempPath = req.body.formData.file.path;
     // const targetPath = path.join(__dirname, "../uploads/image.png");
