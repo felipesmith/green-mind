@@ -34,6 +34,7 @@ searchPost = async (_id ) => {
 }
 
 updatePhoto = async(_id,image)=>{
+  console.log(_id);
   let post = await Posts.find({_id}).sort({ '_id': -1 });
   console.log("Esta es la imagen"+image);
   console.log("Este es el post" +post);

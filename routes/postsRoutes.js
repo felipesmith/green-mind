@@ -96,6 +96,7 @@ router.post(
     console.log(
       `The URL is ${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath }).split('?')[0]}`
     );
+    console.log(req.body.post);
     let status =  updatePhoto(req.body.post, `${s3.getSignedUrl('getObject', { Bucket: bucket, Key: targetPath }).split('?')[0]}`);
     res
       .status(200)
