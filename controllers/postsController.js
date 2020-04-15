@@ -1,4 +1,5 @@
 let Posts = require("../models/Posts");
+let multer = require("multer");
 
 allPosts = async () => {
     let posts = await Posts.find({}).sort({'_id': -1});
@@ -32,6 +33,15 @@ searchPost = async (_id ) => {
     return post;
 }
 
+updatePhoto = async(_id,image)=>{
+  let post = await Posts.find({_id}).sort({ '_id': -1 });
+  console.log("Esta es la imagen"+image);
+  console.log("Este es el post" +post);
+  post.image = image;
+  await post.save();
+  return {post};
+};
+
 rankPosts = (posts) => {
     let total_score = 0;
     let votes = 0;
@@ -46,4 +56,4 @@ rankPosts = (posts) => {
     return { rating , votes };
 };
 
-module.exports =  {allPosts, createPost, postsByUser, postsByType, postsByDate,searchPost};
+module.exports =  {allPosts, createPost, postsByUser, postsByType, postsByDate,searchPost,updatePhoto};

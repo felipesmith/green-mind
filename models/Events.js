@@ -12,6 +12,7 @@ let eventsSchema = new Schema({
     type:     { type: String, required: true },
     assistants: [{type: String , unique: true }],//[String],
     comments: [String],
+    image: { type: String, default:'https://greenmindbucket.s3.sa-east-1.amazonaws.com/image_1585670384567.png',required: true },
     /*comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments', default :[]}],*/
     owner: { type: String, required: true }
 });
