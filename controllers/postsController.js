@@ -39,6 +39,7 @@ updatePhoto = async(_id,image)=>{
   console.log("Esta es la imagen"+image);
   console.log("Este es el post" +post);
   post.image = image;
+  console.log("Este es el post actualiza3" +post);
   await post.save();
   return {post};
 };
