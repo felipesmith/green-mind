@@ -1,5 +1,6 @@
 let Posts = require("../models/Posts");
 let multer = require("multer");
+let mongoose = require('mongoose');
 
 allPosts = async () => {
     let posts = await Posts.find({}).sort({'_id': -1});
