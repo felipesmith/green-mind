@@ -48,6 +48,7 @@ updatePhoto = async(username,image)=>{
   console.log("Esta es la imagen"+image);
   console.log("Este es el user" +user);
   user.image = image;
+  console.log("Este es el user actualiza2" +user);
   await user.save();
   return {username};
 };
