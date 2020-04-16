@@ -33,8 +33,8 @@ router.get('/all', async function(req,res) {
 
 router.post('/create', async function(req,res) {
     try {
-        let { title, description, createDate, score, type, owner, comments} = req.body;
-        let created = await createPost(title, description, createDate, score, type, owner, comments);
+        let { title, description, createDate, score, type, owner, comments,image} = req.body;
+        let created = await createPost(title, description, createDate, score, type, owner, comments,image);
         res.json(created);
     }
     catch (error) {
@@ -73,7 +73,12 @@ router.get('/post/:_id', async function(req, res) {
     }
 });
 
-
+const handleError = (err, res) => {
+  res
+    .status(500)
+    .contentType("text/plain")
+    .end("Oops! Something went wrong!");
+};
 
 router.post(
   "/images/upload",
