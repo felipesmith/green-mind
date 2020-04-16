@@ -39,10 +39,10 @@ updatePhoto = async(_id,image)=>{
   let post = await Posts.find({_id}).sort({ '_id': -1 });
   console.log("Esta es la imagen"+image);
   console.log("Este es el post" +post);
-  post.image = image;
+  post[0].image = image;
   console.log("Este es el post actualiza3" +post);
-  await post.save();
-  return {post};
+  await post[0].save();
+  return {post[0]};
 };
 
 rankPosts = (posts) => {
