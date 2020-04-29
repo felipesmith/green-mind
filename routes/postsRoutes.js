@@ -33,14 +33,15 @@ router.get('/all', async function(req,res) {
 
 router.post('/create', async function(req,res) {
     try {
-        let { title, description, createDate, score, type, owner, comments,image} = req.body;
-        let created = await createPost(title, description, createDate, score, type, owner, comments,image);
+        let { title, description, createDate, score, type, owner, comments} = req.body;
+        let created = await createPost(title, description, createDate, score, type, owner, comments);
         res.json(created);
     }
     catch (error) {
         console.log(error);
     }
 });
+
 
 router.get('/date/:createDate', async function(req, res) {
     try {

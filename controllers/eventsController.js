@@ -1,4 +1,6 @@
 let Events = require("../models/Events");
+let multer = require("multer");
+let mongoose = require('mongoose');
 
 allEvents = async () => {
     let events = await Events.find({}).sort({'_id': -1});
@@ -37,6 +39,17 @@ searchEvent = async (_id ) => {
     return event;
 }
 
+updatePhoto = async(_id,image)=>{
+  console.log(_id);
+  let event = await Events.findOne({_id});
+  console.log("Esta es la imagen"+image);
+  console.log("Este es el evento" +event);
+  event.image = image;
+  console.log("Este es el post actualiza3" +event);
+  await event.save();
+  return {event};
+};
+
 assistUser = async (userId, _id) => {
     let event = await Events.findOne({_id})
     console.log(event.assistants);
@@ -61,4 +74,4 @@ rankEvents = (events) => {
     return { rating , votes };
 };
 
-module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate,searchEvent,assistUser};
+module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate,searchEvent,assistUser,updatePhoto};
