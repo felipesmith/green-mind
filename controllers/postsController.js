@@ -10,7 +10,7 @@ allPosts = async () => {
 createPost = async (title, description, createDate, score, type, owner, comments) => {
     let new_post = Posts({ title, description, createDate, score, type, owner, comments });
     await new_post.save();
-    return { title, description, createDate, score, type, owner, comments };
+    return { new_post };
 };
 
 postsByUser = async (username) => {
