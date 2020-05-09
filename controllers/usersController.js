@@ -54,12 +54,28 @@ updatePhoto = async(username,image)=>{
 };
 
 assistEvent = async (eventId, username) => {
-    let user = await Users.findOne({username})
+    let user = await Users.findOne({username});
     console.log(user.events);
     console.log(user);
     user.events.push(eventId);
     await user.save();
     return { user };
+};
+
+followUser = async (username, _id) => {
+  console.log(username);
+  console.log(_id);
+    let user = await Users.findOne({_id});
+    let user2 = await Users.findOne({username});
+    console.log(user);
+    console.log(user.follows);
+    console.log(user2);
+    console.log(user2.followers);
+    user.follows.push(username);
+    await user.save();
+    user2.followers.push(_id);
+    await user.save();
+    return {user};
 };
 
 
