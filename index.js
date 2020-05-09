@@ -9,6 +9,7 @@ let eventsRoutes  = require("./routes/eventsRoutes");
 let postsRoutes  = require("./routes/postsRoutes");
 require('dotenv').config();
 
+let configMensaje = require('./configMensaje');
 let fs = require("fs");
 
 let app             = express();
@@ -39,6 +40,11 @@ app.use('/users',       usersRoutes);
 app.use('/comments',    commentsRoutes);
 app.use('/events',    eventsRoutes);
 app.use('/posts',    postsRoutes);
+
+app.post('/formulario', (req, res) => {
+ configMensaje(req.body);
+ res.status(200).send();
+})
 
 let port = process.env.PORT || 8080;
 
