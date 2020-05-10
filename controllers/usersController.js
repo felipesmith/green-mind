@@ -73,8 +73,8 @@ followUser = async (username, owner) => {
     console.log(user2.followers);
     user.follows.push(username);
     await user.save();
-    user2.followers.push(_id);
-    await user.save();
+    user2.followers.push(owner);
+    await user2.save();
     return {user};
 };
 
