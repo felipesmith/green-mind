@@ -66,9 +66,9 @@ followUser = async (user, owner) => {
     console.log(user);
     console.log(owner);
     let username = user;
-    let user2 = await Users.findOne({username});
-    username = owner;
     let user1 = await Users.findOne({username});
+    username = owner;
+    let user2 = await Users.findOne({username});
     console.log(user2);
     console.log(user2.followers);
     console.log(user1);
