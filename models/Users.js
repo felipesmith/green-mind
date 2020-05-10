@@ -17,7 +17,7 @@ let userSchema = new Schema({
     aluminium:     { type: Number, default:0, required: true },
     events: [{type: String , unique: true }],
     followers:[{type: String, unique: true}],
-    folows:[{type: String, unique: true}],
+    follows:[{type: String, unique: true}],
     image: { type: String, default:'https://greenmindbucket.s3.sa-east-1.amazonaws.com/image_1585670384567.png',required: true }
 });
 
