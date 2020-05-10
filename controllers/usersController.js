@@ -62,20 +62,22 @@ assistEvent = async (eventId, username) => {
     return { user };
 };
 
-followUser = async (username, owner) => {
-  console.log(username);
-  console.log(owner);
+followUser = async (user, owner) => {
+    console.log(user);
+    console.log(owner);
+    let username = user;
     let user2 = await Users.findOne({username});
-    let user = await Users.findOne({owner});
+    username = owner;
+    let user1 = await Users.findOne({username});
     console.log(user2);
     console.log(user2.followers);
-    console.log(user);
-    console.log(user.follows);
-    user.follows.push(username);
-    await user.save();
-    user2.followers.push(owner);
+    console.log(user1);
+    console.log(user1.follows);
+    user1.follows.push(user2.username);
+    await user1.save();
+    user2.followers.push(user1.username);
     await user2.save();
-    return {user};
+    return {user1};
 };
 
 
