@@ -80,5 +80,31 @@ followUser = async (user, owner) => {
     return {user1};
 };
 
+unfollowUser = async (user, owner) => {
+    console.log(user);
+    console.log(owner);
+    let username = user;
+    let user1 = await Users.findOne({username});
+    username = owner;
+    let user2 = await Users.findOne({username});
+    console.log(user2);
+    console.log(user2.followers);
+    console.log(user1);
+    console.log(user1.follows);
+    let index = user1.follows.indexOf(user2.username);
+    if (index > -1) {
+      user1.follows.splice(index, 1);
+    }
+    await user1.save();
+    let index = user2.followers.indexOf(user1.username);
+    if (index > -1) {
+      user2.followers.splice(index, 1);
+    }
+    await user2.save();
+    console.log(user2.followers);
+    console.log(user1.follows);
+    return {user1};
+};
+
 
 module.exports =  { allUsers, createUser, logInUser, changePasswordUser, searchUser,assistEvent,updatePhoto,searchUserById };

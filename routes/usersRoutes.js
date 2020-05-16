@@ -99,6 +99,18 @@ router.post('/follow', async function(req, res) {
     }
 });
 
+router.post('/unfollow', async function(req, res) {
+    try {
+      console.log(req.body.username);
+      console.log(req.body.owner);
+        let status = await unfollowUser(req.body.username, req.body.owner);
+        res.json(status);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
 
 router.post('/update', async function(req, res) {
     try {
