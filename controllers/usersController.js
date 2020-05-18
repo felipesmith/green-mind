@@ -62,6 +62,18 @@ assistEvent = async (eventId, username) => {
     return { user };
 };
 
+unassistEvent = async (eventId, username) => {
+    let user = await Users.findOne({username});
+    console.log(user.events);
+    console.log(user);
+    let index = user.events.indexOf(eventId);
+    if (index > -1) {
+      user.events.splice(index, 1);
+    }
+    await user.save();
+    return { user };
+};
+
 followUser = async (user, owner) => {
     console.log(user);
     console.log(owner);
@@ -96,7 +108,7 @@ unfollowUser = async (user, owner) => {
       user1.follows.splice(index, 1);
     }
     await user1.save();
-    let index = user2.followers.indexOf(user1.username);
+    index = user2.followers.indexOf(user1.username);
     if (index > -1) {
       user2.followers.splice(index, 1);
     }

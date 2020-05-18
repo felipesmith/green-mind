@@ -95,6 +95,26 @@ router.post('/assistants', async function(req, res) {
     }
 });
 
+router.post('/unassistants', async function(req, res) {
+    try {
+        let status = await unassistUser(req.body.userId, req.body._id);
+        res.json(status);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
+router.post('/score', async function(req, res) {
+    try {
+        let status = await scoreEvent(req.body.score, req.body.eventId);
+        res.json(status);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
 const handleError = (err, res) => {
   res
     .status(500)

@@ -87,6 +87,16 @@ router.post('/assist', async function(req, res) {
     }
 });
 
+router.post('/unassist', async function(req, res) {
+    try {
+        let status = await unassistEvent(req.body.eventId, req.body.username);
+        res.json(status);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
 router.post('/follow', async function(req, res) {
     try {
       console.log(req.body.username);

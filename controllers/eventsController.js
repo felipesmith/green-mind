@@ -59,6 +59,28 @@ assistUser = async (userId, _id) => {
     return { event };
 };
 
+unassistUser = async (userId, _id) => {
+    let event = await Events.findOne({_id})
+    console.log(event.assistants);
+    console.log(event);
+    let index = event.assistants.indexOf(userId);
+    if (index > -1) {
+      event.assistants.splice(index, 1);
+    }
+    await event.save();
+    return { event };
+};
+
+scoreEvent = async (score, _id) => {
+    let event = await Events.findOne({_id})
+    console.log(event.score);
+    event.score=event.score+score;
+    event.comments=event.comments++;
+    //event.assistants.push(userId);
+    console.log(event);
+    await event.save();
+    return { event };
+};
 
 rankEvents = (events) => {
     let total_score = 0;
