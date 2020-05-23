@@ -75,7 +75,7 @@ scoreEvent = async (score, _id) => {
     let event = await Events.findOne({_id})
     console.log(event.score);
     event.score=event.score+score;
-    event.comments=event.comments++;
+    event.comments=event.comments+1;
     //event.assistants.push(userId);
     console.log(event);
     await event.save();
