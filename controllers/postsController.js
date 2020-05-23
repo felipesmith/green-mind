@@ -45,6 +45,17 @@ updatePhoto = async(_id,image)=>{
   return {post};
 };
 
+scorePost = async (score, _id) => {
+    let post = await Posts.findOne({_id})
+    console.log(post.score);
+    post.score=parseInt(post.score, 10)+parseInt(score,10);
+    post.comments=post.comments+1;
+    //event.assistants.push(userId);
+    console.log(post);
+    await post.save();
+    return { post };
+};
+
 rankPosts = (posts) => {
     let total_score = 0;
     let votes = 0;
@@ -59,4 +70,4 @@ rankPosts = (posts) => {
     return { rating , votes };
 };
 
-module.exports =  {allPosts, createPost, postsByUser, postsByType, postsByDate,searchPost,updatePhoto};
+module.exports =  {allPosts, createPost, postsByUser, postsByType, postsByDate,searchPost,updatePhoto,scorePost};

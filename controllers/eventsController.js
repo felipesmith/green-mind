@@ -96,4 +96,4 @@ rankEvents = (events) => {
     return { rating , votes };
 };
 
-module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate,searchEvent,assistUser,updatePhoto};
+module.exports =  {allEvents, createEvent, eventsByUser, eventsByType, eventsByLocation, eventsByDate,searchEvent,assistUser,updatePhoto,scoreEvent,unassistUser};

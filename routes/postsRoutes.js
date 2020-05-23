@@ -74,6 +74,16 @@ router.get('/post/:_id', async function(req, res) {
     }
 });
 
+router.post('/score', async function(req, res) {
+    try {
+        let status = await scorePost(req.body.score, req.body.postId);
+        res.json(status);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+
 const handleError = (err, res) => {
   res
     .status(500)
