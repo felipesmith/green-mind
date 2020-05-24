@@ -48,7 +48,7 @@ updatePhoto = async(_id,image)=>{
 scorePost = async (score, _id) => {
     let post = await Posts.findOne({_id})
     console.log(post.score);
-    post.score=parseInt(post.score, 10)+parseInt(score,10);
+    post.score=Number(post.score)+Number(score);
     post.comments=post.comments+1;
     //event.assistants.push(userId);
     console.log(post);
