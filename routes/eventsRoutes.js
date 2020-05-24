@@ -19,6 +19,8 @@ let { allEvents,
     eventsByType,
     eventsByLocation,
     eventsByDate,
+    unassistUser,
+    scoreEvent,
   updatePhoto} = require('../controllers/eventsController');
 
 

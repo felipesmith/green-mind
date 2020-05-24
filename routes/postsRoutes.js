@@ -18,6 +18,7 @@ let { allPosts,
     postsByUser, /*Revisar el concepto*/
     postsByType,
     postsByDate,
+    scorePost,
   updatePhoto} = require('../controllers/postsController');
 
 
