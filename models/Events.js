@@ -10,7 +10,7 @@ let eventsSchema = new Schema({
     createDate: { type: Date, default: Date.now,required: true },
     score:      { type: Number, default: 0, required: false },
     type:     { type: String, required: true },
-    assistants: [{type: String , unique: true }],//[String],
+    assistants: [{type: String , required: true }],//[String],
     comments: { type: Number, default: 0, required: false },
     image: { type: String, default:'https://greenmindbucket.s3.sa-east-1.amazonaws.com/image_1585670384567.png',required: true },
     /*comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comments', default :[]}],*/
