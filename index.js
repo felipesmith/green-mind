@@ -14,8 +14,8 @@ let fs = require("fs");
 
 let app             = express();
 
-let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@3.22.232.176:27017/admin";
-
+// let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@3.22.232.176:27017/admin";
+let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@3.22.232.176:27017/greenmind?authSource=admin";
 mongoose.set('useNewUrlParser',     true);
 mongoose.set('useFindAndModify',    false);
 mongoose.set('useCreateIndex',      true);
