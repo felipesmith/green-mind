@@ -14,7 +14,7 @@ let fs = require("fs");
 
 let app             = express();
 
-let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@54.233.217.136:27017/greenmind";
+let urlDB = process.env.URLDB || "mongodb://greenmind:greenmind@3.22.232.176:27017/greenmind";
 
 mongoose.set('useNewUrlParser',     true);
 mongoose.set('useFindAndModify',    false);
